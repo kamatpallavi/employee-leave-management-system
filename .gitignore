@@ -1,0 +1,16 @@
+# .NET build artifacts
+backend/**/bin/
+backend/**/obj/
+backend/**/*.user
+backend/**/.vs/
+
+# Angular / Node
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+
+# OS / Editor junk
+.vs/
+.vscode/
+*.suo
+.DS_Store

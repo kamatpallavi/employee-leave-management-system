@@ -1,0 +1,6 @@
+@emp_leave_management_HostAddress = http://localhost:5039
+
+GET {{emp_leave_management_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
