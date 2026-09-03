@@ -1,0 +1,23 @@
+<h2>Leave Balance</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Leave Type</th>
+      <th>Total Days</th>
+      <th>Used Days</th>
+      <th>Remaining Days</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let leave of leaves">
+      <td>{{ leave.leavetypeid }}</td>
+      <td>{{ leave.totaldays }}</td>
+      <td>{{ leave.useddays }}</td>
+      <td>{{ leave.remainingdays }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- <button (click)="goToMyLeaves()">My Leaves</button> -->

@@ -1,0 +1,39 @@
+<div class="register-box">
+  <h1>Registration</h1>
+
+  <div class="form-group">
+    <h2>Enter Name</h2>
+    <input type="text" [(ngModel)]="name" placeholder="Enter your name" />
+  </div>
+
+  <div class="form-group">
+    <h2>Enter Email</h2>
+    <input type="email" [(ngModel)]="email" placeholder="Enter your email" />
+  </div>
+
+  <div class="form-group">
+    <h2>Enter Password</h2>
+    <input type="password" [(ngModel)]="password" placeholder="Enter your password" />
+  </div>
+
+  <div class="form-group">
+    <h2>Role</h2>
+    <select [(ngModel)]="role">
+      <option value="Developer">Developer</option>
+      <option value="HR">HR</option>
+      <option value="Manager">Manager</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <h2>Department</h2>
+    <select [(ngModel)]="departmentid">
+      <option [ngValue]="1">Developer</option>
+      <option [ngValue]="2">HR</option>
+      <option [ngValue]="3">Manager</option>
+    </select>
+  </div>
+<br>
+  <input type="button" class="register-btn" value="Register" (click)="register()" />
+</div>
+
