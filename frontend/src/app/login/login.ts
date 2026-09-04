@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RegistrationService } from '../registration';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,9 +13,10 @@ export class Login {
   email: string = '';
   password: string = '';
 
-   constructor(private registrationService: RegistrationService) {
-
-  }
+  constructor(
+  private registrationService: RegistrationService,
+  private router: Router
+) {}
   login() {
     const user = {
       email: this.email,
@@ -30,6 +32,7 @@ export class Login {
       localStorage.setItem('token', response.token);
 
       alert('User logged in successfully');
+      this.router.navigate(['/dashboard']);
       },
       error: (error) => {
         console.log(error);
