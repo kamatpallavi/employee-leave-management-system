@@ -13,4 +13,13 @@ export class Leave {
       `https://localhost:7291/api/Leave/balance/${id}`
     );
   }
+
+
+applyLeave(leaveRequest: any) {
+  return this.http.post(
+    `https://localhost:7291/api/Leave/apply`,
+    leaveRequest,
+    { responseType: 'text' }
+  );
+}
 }

@@ -1,0 +1,29 @@
+<div class="apply-leave-box">
+<h1>Apply Leave</h1>
+
+
+
+<div class="form-group">
+    <h2> Select Leave Type</h2>
+    <select [(ngModel)]="leaveType">
+      <option [ngValue]="1">Casual</option>
+      <option [ngValue]="2">Sick</option>
+      <option [ngValue] ="3">Earned Leave</option>
+    </select>
+  </div>
+
+  <h2> Enter from date</h2>
+  <input type="date" [(ngModel)]="fromDate" placeholder="Enter from date" />
+  <h2> Enter to date</h2>
+  <input type="date" [(ngModel)]="toDate" placeholder="Enter to date" />
+<h2>Reason</h2>
+<input type="text" [(ngModel)]="reason" placeholder="Enter reason" />
+<br>
+<br>
+  <input
+  type="button"
+  class="apply-btn"
+  value="Apply Leave" class="apply-button"
+  (click)="applyLeave()">
+
+  </div>
