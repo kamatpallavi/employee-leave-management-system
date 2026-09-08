@@ -22,4 +22,10 @@ applyLeave(leaveRequest: any) {
     { responseType: 'text' }
   );
 }
+
+getMyLeaves() {
+  return this.http.get(
+    `https://localhost:7291/api/Leave/my-leaves`
+  );
+}
 }
