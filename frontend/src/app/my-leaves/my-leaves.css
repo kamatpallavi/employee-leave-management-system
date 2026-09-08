@@ -1,0 +1,21 @@
+.my-leaves-box{
+    
+    
+    margin: 40px auto;
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 32px;
+    text-align: center;
+    box-sizing: border-box;
+    border-color: #007bff;
+}
+
+table{
+    width: 100%;
+    
+    margin-top: 20px;
+}
+th{
+    color:white;
+    font-size: 25px;
+}

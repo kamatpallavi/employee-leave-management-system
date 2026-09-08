@@ -1,15 +1,40 @@
-<h1>My Leaves</h1>
+
 
 <div class="my-leaves-box">
-    <h2>from date</h2>
-    <input type="date" [(ngModel)]="fromDate" placeholder="Enter from date" />
-    <h2>to date</h2>
-    <input type="date" [(ngModel)]="toDate" placeholder="Enter to date" />
-    <h2>Reason</h2>
-    <input type="text" [(ngModel)]="reason" placeholder="Enter reason" />
-    <h2>status</h2>
-    <input type="text" [(ngModel)]="status" placeholder="Enter status" />
-    <h2>applied date</h2>
-    <input type="date" [(ngModel)]="appliedDate" placeholder="Enter applied date" />
+   
+
+  <h2>My Leave Requests</h2>
+
+  <table>
+
+    <thead>
+      <tr>
+        <th>From Date</th>
+        <th>To Date</th>
+        <th>Reason</th>
+        <th>Status</th>
+        <th>Applied Date</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr *ngFor="let leave of myleaves">
+
+        <td>{{ leave.fromdate }}</td>
+        <td>{{ leave.todate }}</td>
+        <td>{{ leave.reason }}</td>
+        <td>{{ leave.status }}</td>
+        <td>{{ leave.applieddate }}</td>
+
+      </tr>
+
+    </tbody>
+
+  </table>
+
+  
+
+
 
 </div>

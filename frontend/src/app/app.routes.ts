@@ -4,6 +4,7 @@ import { Registration } from './registration/registration';
 import { Login } from './login/login';
 import { Dashboard } from './dashboard/dashboard';
 import { ApplyLeave } from './apply-leave/apply-leave';
+import { MyLeaves } from './my-leaves/my-leaves';
 
 export const routes: Routes = [
   {
@@ -21,5 +22,9 @@ export const routes: Routes = [
   {
     path: 'apply',
     component: ApplyLeave
+  },
+  {
+    path: 'my-leaves',
+    component: MyLeaves
   }
 ];
