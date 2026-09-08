@@ -156,7 +156,7 @@ namespace emp_leave_management.Controllers
             var leavereq = _context.LeaveRequests.Where(x => x.userid == userId).ToList();
 
             // if nothing found, return NotFound
-            if (leavereq == null)
+            if (leavereq.Count == 0)
             {
                 return NotFound("Leave request not found");
             }
