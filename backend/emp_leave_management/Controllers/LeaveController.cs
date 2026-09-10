@@ -2,6 +2,7 @@
 using emp_leave_management.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 namespace emp_leave_management.Controllers
 {
@@ -62,8 +63,18 @@ namespace emp_leave_management.Controllers
         [HttpGet("pending")]
         public IActionResult PendReq()
         {
-            var req = _context.LeaveRequests
-                .Where(x => x.status == "Pending")
+            var req = _context.LeaveRequests.Include(x => x.User)
+                .Where(x => x.status == "Pending").Select(x => new
+                {
+                    x.id,
+                    employeeName = x.User.name,
+                    employeeEmail = x.User.email,
+                    x.leavetypeid,
+                    x.fromdate,
+                    x.todate,
+                    x.reason,
+                    x.status
+                })
                 .ToList();
 
             if (req.Count == 0)
