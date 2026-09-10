@@ -1,36 +1,49 @@
 <div class="em">
-{{ email }}
+  {{ email }}
 </div>
+
 <div class="dashboard-box">
-<h2>Leave Balance</h2>
 
-<table>
-  <thead>
-    <tr>
-     
-      <th>Leave Type</th>
-      <th>Total Days</th>
-      <th>Used Days</th>
-      <th>Remaining Days</th>
-    </tr>
-  </thead>
+  <h2>Leave Balance</h2>
 
-  <tbody>
-    <tr *ngFor="let leave of leaves">
-     
-      <td>{{ leave.leavetypeid }}</td>
-      <td>{{ leave.totaldays }}</td>
-      <td>{{ leave.useddays }}</td>
-      <td>{{ leave.remainingdays }}</td>
-    </tr>
-  </tbody>
-</table>
-<br>
-<button (click)="getLeaveBalance()">
-  View Balance
-</button>
-<button (click)="viewLeaves()">
-  My Leaves
-</button>
+  <table>
+
+    <thead>
+      <tr>
+        <th>Leave Type</th>
+        <th>Total Days</th>
+        <th>Used Days</th>
+        <th>Remaining Days</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr *ngFor="let leave of leaves">
+
+        <td>{{ leave.leavetypeid }}</td>
+        <td>{{ leave.totaldays }}</td>
+        <td>{{ leave.useddays }}</td>
+        <td>{{ leave.remainingdays }}</td>
+
+      </tr>
+
+    </tbody>
+
+  </table>
+
+  <br>
+
+  <button (click)="getLeaveBalance()">
+    View Balance
+  </button>
+
+  <button (click)="viewLeaves()">
+    My Leaves
+  </button>
+
+  <button *ngIf="role === 'Manager' " (click)="pendingRequests()">
+    Pending Requests
+  </button>
 
 </div>

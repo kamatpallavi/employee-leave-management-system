@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectorRef, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Leave } from '../leave';
@@ -10,10 +10,11 @@ import { Router } from '@angular/router';
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 })
-export class Dashboard {
+export class Dashboard implements OnInit {
 
   leaves: any[] = [];
   email: string = '';
+  role: string = '';
 
   constructor(
     private leaveService: Leave,
@@ -21,7 +22,26 @@ export class Dashboard {
     private router: Router
   ) {}
 
-  getLeaveBalance() {
+  // Runs automatically when Dashboard opens
+  ngOnInit() {
+
+    const decodedPayload = this.getTokenData();
+
+    this.role = decodedPayload[
+      "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
+    ];
+
+    this.email = decodedPayload[
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"
+    ];
+
+    console.log("ROLE:", this.role);
+    console.log("EMAIL:", this.email);
+  }
+
+
+  // Decodes the JWT and returns its payload
+  getTokenData() {
 
     const token = localStorage.getItem('token');
 
@@ -29,11 +49,14 @@ export class Dashboard {
 
     const decodedPayload = JSON.parse(atob(payload));
 
-    this.email = decodedPayload[
-      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"
-    ];
+    return decodedPayload;
+  }
 
-    console.log(decodedPayload);
+
+  // Runs when View Balance is clicked
+  getLeaveBalance() {
+
+    const decodedPayload = this.getTokenData();
 
     const id = Number(
       decodedPayload[
@@ -41,9 +64,12 @@ export class Dashboard {
       ]
     );
 
+    console.log("USER ID:", id);
+
     this.leaveService.getLeaveBalance(id).subscribe({
 
       next: (response: any) => {
+
         console.log("6. API RESPONSE:", response);
 
         this.leaves = response;
@@ -52,15 +78,22 @@ export class Dashboard {
       },
 
       error: (error) => {
+
         console.log(error);
+
         alert(error.error);
       }
-
     });
   }
 
+
+  // Runs when My Leaves is clicked
   viewLeaves() {
+
     this.router.navigate(['/my-leaves']);
   }
 
+  pendingRequests() {
+  this.router.navigate(['/pending-requests']);
+}
 }

@@ -28,4 +28,7 @@ getMyLeaves() {
     `https://localhost:7291/api/Leave/my-leaves`
   );
 }
+getPendingRequests() {
+  return this.http.get(`https://localhost:7291/api/Leave/pending`);
+}
 }

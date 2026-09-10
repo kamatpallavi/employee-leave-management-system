@@ -1,0 +1,39 @@
+<h2>Pending Leave Requests</h2>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Employee Name</th>
+      <th>Employee Email</th>
+      <th>Leave Type</th>
+      <th>From Date</th>
+      <th>To Date</th>
+      <th>Reason</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+<p>{{ requests.length }}</p>
+  <tbody>
+    <tr *ngFor="let request of requests">
+
+      <td>{{ request.employeeName }}</td>
+
+      <td>{{ request.employeeEmail }}</td>
+
+      <td>{{ request.leavetypeid }}</td>
+
+      <td>{{ request.fromdate }}</td>
+
+      <td>{{ request.todate }}</td>
+
+      <td>{{ request.reason }}</td>
+
+      <td>{{ request.status }}</td>
+
+      
+
+    </tr>
+  </tbody>
+</table>
