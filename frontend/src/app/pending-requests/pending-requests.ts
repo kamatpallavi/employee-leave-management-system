@@ -49,4 +49,57 @@ export class PendingRequests implements OnInit {
     });
 
   }
+
+
+  approveLeave(id: number) {
+
+    this.leaveService.approveLeave(id).subscribe({
+
+      next: (response: any) => {
+
+        console.log("Leave approved:", response);
+
+        this.requests = this.requests.filter(request => request.id !== id);
+
+        this.cdr.detectChanges();
+
+      },
+
+      error: (error) => {
+
+        console.log(error);
+
+        alert(error.error);
+
+      }
+
+    });
+
+  }
+
+  rejectLeave(id: number) {
+
+    this.leaveService.rejectLeave(id).subscribe({
+
+      next: (response: any) => {
+
+        console.log("Leave rejected:", response);
+
+        this.requests = this.requests.filter(request => request.id !== id);
+
+        this.cdr.detectChanges();
+
+      },
+
+      error: (error) => {
+
+        console.log(error);
+
+        alert(error.error);
+
+      }
+
+    });
+
+  }
 }

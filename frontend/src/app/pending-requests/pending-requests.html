@@ -32,7 +32,10 @@
 
       <td>{{ request.status }}</td>
 
-      
+ <td>
+    <button (click)="approveLeave(request.id)">Approve</button>
+    <button (click)="rejectLeave(request.id)">Reject</button>
+  </td>
 
     </tr>
   </tbody>

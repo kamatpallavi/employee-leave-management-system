@@ -31,4 +31,13 @@ getMyLeaves() {
 getPendingRequests() {
   return this.http.get(`https://localhost:7291/api/Leave/pending`);
 }
+
+
+approveLeave(id: number) {
+  return this.http.put(`https://localhost:7291/api/Leave/approve/${id}`, {});
+}
+
+rejectLeave(id: number) {
+  return this.http.put(`https://localhost:7291/api/Leave/reject/${id}`, {});
+}
 }
