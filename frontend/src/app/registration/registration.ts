@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RegistrationService } from '../registration';
+import { Router } from '@angular/router';
+import { Login } from '../login/login';
 
 @Component({
   selector: 'app-registration',
@@ -16,7 +18,7 @@ export class Registration {
   role: string = '';
   departmentid: number = 0;
 
-  constructor(private registrationService: RegistrationService) {
+  constructor(private registrationService: RegistrationService, private router: Router) {
 
   }
 
@@ -34,11 +36,16 @@ export class Registration {
       next: (response) => {
         console.log(response);
         alert('User registered successfully');
+        this.router.navigate(['/dashboard']);
       },
       error: (error) => {
         console.log(error);
         alert(error.error);
       }
     });
+  }
+  goToLogin()
+  {
+    this.router.navigate(['/login']);
   }
 }

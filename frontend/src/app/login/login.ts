@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RegistrationService } from '../registration';
 import { Router } from '@angular/router';
+import { Registration } from '../registration/registration';
 
 @Component({
   selector: 'app-login',
@@ -41,5 +42,7 @@ export class Login {
     });
      
   }
- 
+ goToRegistration() {
+    this.router.navigate(['/registration']);
+  }
 }

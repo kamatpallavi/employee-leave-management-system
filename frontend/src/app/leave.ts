@@ -32,12 +32,15 @@ getPendingRequests() {
   return this.http.get(`https://localhost:7291/api/Leave/pending`);
 }
 
-
 approveLeave(id: number) {
-  return this.http.put(`https://localhost:7291/api/Leave/approve/${id}`, {});
+  return this.http.put(
+    `https://localhost:7291/api/Leave/approve/${id}`,
+    {},
+    { responseType: 'text' }
+  );
 }
 
 rejectLeave(id: number) {
-  return this.http.put(`https://localhost:7291/api/Leave/reject/${id}`, {});
+  return this.http.put(`https://localhost:7291/api/Leave/reject/${id}`, {},{ responseType: 'text' });
 }
 }

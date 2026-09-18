@@ -14,7 +14,7 @@
       <th>Action</th>
     </tr>
   </thead>
-<p>{{ requests.length }}</p>
+
   <tbody>
     <tr *ngFor="let request of requests">
 
@@ -33,8 +33,8 @@
       <td>{{ request.status }}</td>
 
  <td>
-    <button (click)="approveLeave(request.id)">Approve</button>
-    <button (click)="rejectLeave(request.id)">Reject</button>
+    <button class="app" (click)="approveLeave(request.id)">Approve</button><br>
+    <button class="reject" (click)="rejectLeave(request.id)">Reject</button>
   </td>
 
     </tr>
