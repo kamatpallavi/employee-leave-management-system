@@ -12,6 +12,7 @@ h2{
     border: 1px solid #ccc;
     text-align: center;
     background-color: #f9f9f9;
+    position: relative;
 }
 
 table {
@@ -37,4 +38,12 @@ th {
 
 tbody tr:hover {
     background-color: #f1f7fa;
+}
+.logout-btn{
+    border: 1px solid #2f6f95;
+    border-radius: 4px;
+    text-align: left;
+    position: absolute;
+    top: 10px;
+    left: 10px;
 }

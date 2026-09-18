@@ -32,18 +32,19 @@
 
   </table>
 
-  <br>
+  <br><br>
 
   <button (click)="getLeaveBalance()">
     View Balance
   </button>
-
+<br><br>
   <button (click)="viewLeaves()">
     My Leaves
   </button>
-
+<br><br>
   <button *ngIf="role === 'Manager' " (click)="pendingRequests()">
     Pending Requests
   </button>
-
+  <br><br>
+  <button class="logout-btn" (click)="logout()">Logout</button>
 </div>

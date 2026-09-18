@@ -96,4 +96,9 @@ export class Dashboard implements OnInit {
   pendingRequests() {
   this.router.navigate(['/pending-requests']);
 }
+
+logout(){
+  localStorage.removeItem('token');
+  this.router.navigate(['/login']);
+}
 }
