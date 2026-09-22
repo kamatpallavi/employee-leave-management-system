@@ -43,4 +43,19 @@ approveLeave(id: number) {
 rejectLeave(id: number) {
   return this.http.put(`https://localhost:7291/api/Leave/reject/${id}`, {},{ responseType: 'text' });
 }
+
+
+getmyattendance() {
+  return this.http.get(`https://localhost:7291/api/Attendance/my-attendance`);  
+}
+
+
+punchin(){
+   return this.http.post(`https://localhost:7291/api/Attendance/punch-in`, {}, { responseType: 'text' });  
+}
+
+
+punchout(){
+  return this.http.post(`https://localhost:7291/api/Attendance/punch-out`, {}, { responseType: 'text' });  
+}
 }

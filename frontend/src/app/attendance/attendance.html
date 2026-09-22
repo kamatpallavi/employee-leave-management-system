@@ -1,0 +1,26 @@
+<p>attendance</p>
+
+<button (click)="punchIn()">Punch In</button>
+
+<button (click)="punchOut()">Punch Out</button>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>DATE</th>
+            <th>PUNCH IN</th>
+            <th>PUNCH OUT</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let attendance of attendances">
+            <td>{{attendance.date}}</td>
+            <td>{{attendance.checkin }}</td>
+            <td>{{attendance.checkout }}</td>  
+        </tr>  
+    </tbody>
+
+
+</table>
+

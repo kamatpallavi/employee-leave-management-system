@@ -6,6 +6,7 @@ import { Dashboard } from './dashboard/dashboard';
 import { ApplyLeave } from './apply-leave/apply-leave';
 import { MyLeaves } from './my-leaves/my-leaves';
 import { PendingRequests } from './pending-requests/pending-requests';
+import { Attendance } from './attendance/attendance';
 export const routes: Routes = [
   {
     path: 'registration',
@@ -30,5 +31,6 @@ export const routes: Routes = [
   {
     path: 'pending-requests',
     component: PendingRequests
-  }
+  },
+  { path: 'attendance', component: Attendance }
 ];
