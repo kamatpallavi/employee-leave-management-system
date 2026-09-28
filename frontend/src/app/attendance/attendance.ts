@@ -1,19 +1,20 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { Leave } from '../leave';
-import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-attendance',
-  imports: [FormsModule],
+  imports: [CommonModule],
   templateUrl: './attendance.html',
-  styleUrl: './attendance.css',
+  styleUrl: './attendance.css'
 })
-export class Attendance {
-  constructor(private http: HttpClient, private leaveService: Leave) {}
-  
+export class Attendance implements OnInit {
+
   attendances: any[] = [];
-   ngOnInit() {
+
+  constructor(private leaveService: Leave) {}
+
+  ngOnInit() {
     this.getAttendance();
   }
 
@@ -32,24 +33,28 @@ export class Attendance {
 
   punchIn() {
     this.leaveService.punchin().subscribe({
-      next:(response:any)=>{
+      next: (response: any) => {
         alert("Punched In Successfully");
+
+        // Refresh attendance table
+        this.getAttendance();
       },
-      error:(error)=>{
+      error: (error) => {
         console.log(error);
         alert(error.error);
       }
     });
-
-
   }
 
-  punchOut(){
+  punchOut() {
     this.leaveService.punchout().subscribe({
-      next:(response:any)=>{
+      next: (response: any) => {
         alert("Punched Out Successfully");
+
+        // Refresh attendance table
+        this.getAttendance();
       },
-      error:(error)=>{
+      error: (error) => {
         console.log(error);
         alert(error.error);
       }

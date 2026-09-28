@@ -45,10 +45,6 @@ rejectLeave(id: number) {
 }
 
 
-getmyattendance() {
-  return this.http.get(`https://localhost:7291/api/Attendance/my-attendance`);  
-}
-
 
 punchin(){
    return this.http.post(`https://localhost:7291/api/Attendance/punch-in`, {}, { responseType: 'text' });  
@@ -58,4 +54,10 @@ punchin(){
 punchout(){
   return this.http.post(`https://localhost:7291/api/Attendance/punch-out`, {}, { responseType: 'text' });  
 }
+
+getmyattendance() {
+    return this.http.get(
+      `https://localhost:7291/api/Attendance/my-attendance`
+    );
+  }
 }
