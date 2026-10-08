@@ -17,6 +17,7 @@ namespace emp_leave_management.Data
         public DbSet<LeaveTypes> LeaveTypes { get; set; }
         public DbSet<LeaveBalances> LeaveBalances { get; set; }
         public DbSet<LeaveRequests> LeaveRequests { get; set; }
+        public DbSet<Attendance> Attendance { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -33,6 +34,8 @@ namespace emp_leave_management.Data
             modelBuilder.Entity<LeaveRequests>()
                 .ToTable("leaverequests");
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Attendance>()
+            .ToTable("attendance");
         }
     }
 }

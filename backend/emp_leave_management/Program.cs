@@ -16,7 +16,19 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // 2. Add Controllers
 builder.Services.AddControllers();
 
-// 3. Configure JWT Authentication
+// 3. Configure CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngular", policy =>
+    {
+        policy
+            .WithOrigins("http://localhost:4200")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
+// 4. Configure JWT Authentication
 builder.Services.AddAuthentication("Bearer")
     .AddJwtBearer("Bearer", options =>
     {
@@ -37,10 +49,10 @@ builder.Services.AddAuthentication("Bearer")
         };
     });
 
-// 4. Add Authorization
+// 5. Add Authorization
 builder.Services.AddAuthorization();
 
-// 5. Add Swagger
+// 6. Add Swagger
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(options =>
@@ -62,24 +74,27 @@ builder.Services.AddSwaggerGen(options =>
 
 var app = builder.Build();
 
-// 6. Enable Swagger
+// 7. Enable Swagger
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-// 7. HTTPS
+// 8. HTTPS
 app.UseHttpsRedirection();
 
-// 8. Check JWT authentication
+// 9. Enable CORS
+app.UseCors("AllowAngular");
+
+// 10. Check JWT authentication
 app.UseAuthentication();
 
-// 9. Check authorization
+// 11. Check authorization
 app.UseAuthorization();
 
-// 10. Map Controllers
+// 12. Map Controllers
 app.MapControllers();
 
-// 11. Start application
+// 13. Start application
 app.Run();
